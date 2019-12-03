@@ -1,16 +1,34 @@
 # classic-wow-item-db
-A database of classic WoW items.
+A MySQL database of classic WoW items.
 
 I couldn't find an easily usable database of items to put in my guild's website to help with loot management. So, I grabbed a database from the Light's Hope private server ([this](https://github.com/brotalnia/database/blob/master/world_full_05_october_2019.7z) file from [this](https://github.com/brotalnia/database) repo).
 
-There's a lot of junk and garbage and whatnot in here, so I cleaned it up a little. Removed a lot of columns I didn't need.
+There's a lot of junk and garbage and whatnot in the unmodified data, so I cleaned it up a little. Removed a lot of columns I didn't need.
+
+To make use of this, you'll probably want a basic understanding of MySQL. Otherwise, you can try to copy+paste the data you find in the `db` folder and manipulate it however you want.
+
+To take the original (unmodified) database and clean it up, I did the following:
+
+1. Import into a MySQL database by running (from the command line outside of mysql) `mysql classicwowdb < /path/to/repo/db/unmodified.sql`. (you can modify the columns in `unmodified.sql` first if you want) (`classicwowdb` can be replaced with whatever your mysql database name is; you'll need to create one before you can do this)
+1. Then I went in and ran the statements found in `alters.sql`. (you can modify these to your liking)
+1. Then I exported my now modified database by running (from the command line outside of mysql) `mysqldump classicwowdb items > /path/to/repo/db/modified.sql`
 
 Included are a few files:
 
-## db/unmodified.sql
+# db/unmodified.sql
 This is all of the items I could grab from the Lights' Hope DB dump.
 
-Some useful notes on some of the columns...
+# column list.txt
+This just contains all of the columns along with a piece of sample data for each column. The sample data is from Azuresong Mageblade. I did this just to get a quick idea for which columns were useful and which were useless. I listed which columns I decided to drop.
+
+# alters.sql
+This is what I did to modify that data. I removed a bunch of columns that were useless to me, added a few I'm going to use on my webapp, and filtered out a lot of data that I wouldn't need. Removed items of poor, common, uncommon, and biege (above legendary) quality. Removed items that require a level under 47.
+
+# db/modified.sql
+This is the final result, and the dataset I'm going to use from here on. It will still require some work, and some items will need to be added back in (such as Tidal Charm), but it's a good starting point.
+
+# Column Notes
+Some useful notes for some of the columns...
 
 ### `entry` column
 This is the item's ingame ID. You can also use this to find the item on websites such as [classic.wowhead.com](https://classic.wowhead.com/).
@@ -59,12 +77,3 @@ These are the general items I found for each value in this column:
 
 ### `allowable_class` column
 This one _seems_ like it would be useful to identify class specific items, but the values were a bit inconsistent. If you spend some time making a lookup table for these though, you might get value out of it.
-
-# column list.txt
-This just contains all of the columns along with a piece of sample data for each column. The sample data is from Azuresong Mageblade. I did this just to get a quick idea for which columns were useful and which were useless. I listed which columns I decided to drop.
-
-# alters.sql
-This is what I did to modify that data. I removed a bunch of columns that were useless to me, added a few I'm going to use on my webapp, and filtered out a lot of data that I wouldn't need. Removed items of poor, common, uncommon, and biege (above legendary) quality. Removed items that require a level under 47.
-
-# db/modified.sql
-This is the final result, and the dataset I'm going to use from here on. It will still require some work, and some items will need to be added back in (such as Tidal Charm), but it's a good starting point.
