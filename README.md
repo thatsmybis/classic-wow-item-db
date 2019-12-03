@@ -7,7 +7,7 @@ There's a lot of junk and garbage and whatnot in here, so I cleaned it up a litt
 
 Included are a few files:
 
-## wow_items.sql
+## db/unmodified.sql
 This is all of the items I could grab from the Lights' Hope DB dump.
 
 Some useful notes on some of the columns...
@@ -66,5 +66,5 @@ This just contains all of the columns along with a piece of sample data for each
 # alters.sql
 This is what I did to modify that data. I removed a bunch of columns that were useless to me, added a few I'm going to use on my webapp, and filtered out a lot of data that I wouldn't need. Removed items of poor, common, uncommon, and biege (above legendary) quality. Removed items that require a level under 47.
 
-# items_table.sql
+# db/modified.sql
 This is the final result, and the dataset I'm going to use from here on. It will still require some work, and some items will need to be added back in (such as Tidal Charm), but it's a good starting point.
