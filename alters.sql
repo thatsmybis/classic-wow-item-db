@@ -1,8 +1,19 @@
+-- Filter out duplicate entries for the same item id.
+-- Duplicates occur when the same item was modified across patches.
+-- Needs to happen before we drop the `patch` column.
+-- Deletes 2074 duplicates.
+DELETE `items1` FROM `items` `items1`
+INNER JOIN `items` `items2`
+WHERE
+    `items1`.`patch` < `items2`.`patch` AND
+    `items1`.`item_id` = `items2`.`item_id`;
+
+-- Remove unwanted columns.
+-- Feel free to alter this to keep any columns you want.
 ALTER TABLE `items`
     DROP COLUMN `patch`,
     DROP COLUMN `class`,
     DROP COLUMN `subclass`,
-    DROP COLUMN `description`,
     DROP COLUMN `flags`,
     DROP COLUMN `buy_count`,
     DROP COLUMN `buy_price`,
@@ -119,44 +130,40 @@ ALTER TABLE `items`
     DROP COLUMN `extra_flags`,
     DROP COLUMN `other_team_entry`;
 
-DELETE FROM `items` WHERE `quality` IN (0, 1, 2, 6); -- poor, common, uncommon, beige
--- 0 = poor
--- 1 = common
--- 2 = uncommon
--- 3 = rare
--- 4 = epic
--- 5 = legendary
--- 6 = beige
+-- Optional, filter out items we're never going to use or want.
+-- This configuration is semi-optimized for endgame gear.
+-- Deletes 9108 items. (if duplicates have already been removed)
+DELETE FROM `items`
+WHERE
+    (
+        ((`required_level` < 40 AND `item_level` < 40) OR (`required_level` < 40 AND `item_level` = 0) OR (`required_level` = 0 AND `item_level` < 40))
+        AND `quality` IN (0, 1, 2, 6) -- poor, common, uncommon, beige
+        AND `name` NOT LIKE '%Recipe:%'
+        AND `name` NOT LIKE '%Formula:%'
+        AND `name` NOT LIKE '%Pattern:%'
+        AND `name` NOT LIKE '%Schematic:%'
+        AND `name` NOT LIKE '%Plans:%'
+        AND `item_id` NOT IN (
+            13335, -- Baron Mount
+            19872, -- Raptor Mount
+            19902, -- Tiger Mount
+            20890, -- aq20 hilt
+            20886, -- aq20 hilt
+            18704, -- Mature Blue Dragon Sinew
+            17204, -- Eye of Sulfuras
+            17966, -- Onyxia Hide Backpack
+            20933, -- Husk of the Old God
+            20929, -- Carapace of the Old God
+            1404, -- Tidal Charm
+            2820, -- Nifty Stopwatch
+            4984, -- Skull of Impending Doom
+            19141 -- Luffa
+        )
+    )
+    OR `name` LIKE '%deprecated%';
 
-DELETE FROM `items` WHERE `required_level` < 47;
--- 0 = ammo, mount, book, etc
--- 1 = head
--- 2 = neck
--- 3 = shoulder
--- 4 = shirt
--- 5 = chest
--- 6 = waist
--- 7 = legs
--- 8 = feet
--- 9 = wrist
--- 10 = hand
--- 11 = finger
--- 12 = trinket
--- 13 = weapon, 1 hander
--- 14 = shield
--- 15 = bow
--- 16 = cloak
--- 17 = 2h weapon
--- 18 = quiver/ammo pouch
--- 19 = //// nothing
--- 20 = cloth chest
--- 21 = more 1h weapons
--- 22 = offhand 1h weapon
--- 23 = offhand non-weapon
--- 24 = ammo
--- 25 = thrown
--- 26 = wand, gun
--- 27 = //// nothing
--- 28 = totem/idol/libram
-
+-- We dropped this column earlier, now we're going to recreate it the way we want it.
 ALTER TABLE `items` ADD COLUMN `class` varchar(10) DEFAULT NULL AFTER `slot`;
+
+-- We add this last to avoid populating ID's and then deleting them, leaving ugly gaps in the list of ID's
+ALTER TABLE `items` ADD COLUMN `id` integer(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;

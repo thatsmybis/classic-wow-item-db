@@ -77,3 +77,7 @@ These are the general items I found for each value in this column:
 
 ### `allowable_class` column
 This one _seems_ like it would be useful to identify class specific items, but the values were a bit inconsistent. If you spend some time making a lookup table for these though, you might get value out of it.
+
+# Searching
+
+You may want to add an index to the table to make the names more effeciently searchable in MySQL: `CREATE FULLTEXT INDEX items_name_fulltext ON `items`(`name`)`
