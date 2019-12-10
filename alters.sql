@@ -1,7 +1,6 @@
 -- Filter out duplicate entries for the same item id.
 -- Duplicates occur when the same item was modified across patches.
 -- Needs to happen before we drop the `patch` column.
--- Deletes 2074 duplicates.
 DELETE `items1` FROM `items` `items1`
 INNER JOIN `items` `items2`
 WHERE
@@ -132,38 +131,62 @@ ALTER TABLE `items`
 
 -- Optional, filter out items we're never going to use or want.
 -- This configuration is semi-optimized for endgame gear.
--- Deletes 9108 items. (if duplicates have already been removed)
 DELETE FROM `items`
 WHERE
     (
-        ((`required_level` < 40 AND `item_level` < 40) OR (`required_level` < 40 AND `item_level` = 0) OR (`required_level` = 0 AND `item_level` < 40))
-        AND `quality` IN (0, 1, 2, 6) -- poor, common, uncommon, beige
-        AND `name` NOT LIKE '%Recipe:%'
-        AND `name` NOT LIKE '%Formula:%'
-        AND `name` NOT LIKE '%Pattern:%'
-        AND `name` NOT LIKE '%Schematic:%'
-        AND `name` NOT LIKE '%Plans:%'
-        AND `item_id` NOT IN (
-            13335, -- Baron Mount
-            19872, -- Raptor Mount
-            19902, -- Tiger Mount
-            20890, -- aq20 hilt
-            20886, -- aq20 hilt
-            18704, -- Mature Blue Dragon Sinew
-            17204, -- Eye of Sulfuras
-            17966, -- Onyxia Hide Backpack
-            20933, -- Husk of the Old God
-            20929, -- Carapace of the Old God
-            1404, -- Tidal Charm
-            2820, -- Nifty Stopwatch
-            4984, -- Skull of Impending Doom
-            19141 -- Luffa
+        -- Filter out low level items
+        (
+            (
+                (`required_level` < 40 AND `item_level` < 40) OR (`required_level` < 40 AND `item_level` = 0) OR (`required_level` = 0 AND `item_level` < 40)
+            )
+            -- Exceptions
+            AND `item_id` NOT IN (
+                13335, -- Baron Mount
+                19872, -- Raptor Mount
+                19902, -- Tiger Mount
+                20890, -- aq20 hilt
+                20886, -- aq20 hilt
+                18704, -- Mature Blue Dragon Sinew
+                17204, -- Eye of Sulfuras
+                17966, -- Onyxia Hide Backpack
+                20933, -- Husk of the Old God
+                20929, -- Carapace of the Old God
+                1404, -- Tidal Charm
+                2820, -- Nifty Stopwatch
+                4984, -- Skull of Impending Doom
+                19141 -- Luffa
+            )
+        )
+        OR
+        -- Filter out low quality items
+        (
+            `quality` IN (0) -- , 1, 2, 6
+            AND `item_id` NOT IN
+            (
+                1404, -- Tidal Charm
+                2820, -- Nifty Stopwatch
+                4984, -- Skull of Impending Doom
+                19141 -- Luffa
+            )
         )
     )
-    OR `name` LIKE '%deprecated%';
+    -- Keep these items
+    AND `name` NOT LIKE '%Recipe:%'
+    AND `name` NOT LIKE '%Formula:%'
+    AND `name` NOT LIKE '%Pattern:%'
+    AND `name` NOT LIKE '%Schematic:%'
+    AND `name` NOT LIKE '%Plans:%';
+
+-- Filter out items with bad words in them (including recipes, formulas, patters, schematics, and plans)
+DELETE FROM `items`
+WHERE
+    `name` LIKE '%deprecated%'
+    OR (`name` LIKE '%test %' AND `item_id` NOT IN (18361, 19160, 19971));
 
 -- We dropped this column earlier, now we're going to recreate it the way we want it.
 ALTER TABLE `items` ADD COLUMN `class` varchar(10) DEFAULT NULL AFTER `slot`;
 
 -- We add this last to avoid populating ID's and then deleting them, leaving ugly gaps in the list of ID's
-ALTER TABLE `items` ADD COLUMN `id` integer(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
+-- ALTER TABLE `items` ADD COLUMN `id` integer(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
+-- Alternatively, we set the actual item ID to the primary key. (only after we've removed duplicates)
+ALTER TABLE `items` ADD PRIMARY KEY(`item_id`);
