@@ -8,7 +8,7 @@ WHERE
     `items1`.`item_id` = `items2`.`item_id`;
 
 -- Remove unwanted columns.
--- Feel free to alter this to keep any columns you want.
+-- Feel free to alter this to keep or remove any columns you want.
 ALTER TABLE `items`
     DROP COLUMN `patch`,
     DROP COLUMN `class`,
@@ -161,7 +161,7 @@ WHERE
         -- Filter out low quality items
         (
             `quality` IN (0) -- , 1, 2, 6
-            AND `item_id` NOT IN
+            AND `item_id` NOT IN -- except for the following items
             (
                 1404, -- Tidal Charm
                 2820, -- Nifty Stopwatch
@@ -181,12 +181,20 @@ WHERE
 DELETE FROM `items`
 WHERE
     `name` LIKE '%deprecated%'
+    OR `name` LIKE '%unused%'
+    OR `name` LIKE '%QAEnchant%'
+    OR `name` LIKE '%ZZOLD%'
+    OR `name` LIKE '%(TEST)%'
+    OR (`name` LIKE '% test%' AND `item_id` NOT IN (19971))
     OR (`name` LIKE '%test %' AND `item_id` NOT IN (18361, 19160, 19971));
 
 -- We dropped this column earlier, now we're going to recreate it the way we want it.
 ALTER TABLE `items` ADD COLUMN `class` varchar(10) DEFAULT NULL AFTER `slot`;
 
--- We add this last to avoid populating ID's and then deleting them, leaving ugly gaps in the list of ID's
+-- Populate the slug (term for the URL friendly name)
+
+
+-- (optional) We add this last to avoid populating ID's and then deleting them, leaving ugly gaps in the list of ID's
 -- ALTER TABLE `items` ADD COLUMN `id` integer(11) unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
--- Alternatively, we set the actual item ID to the primary key. (only after we've removed duplicates)
+-- (optional) Alternative to the previous option, we set the actual item ID to the primary key. (only after we've removed duplicates)
 ALTER TABLE `items` ADD PRIMARY KEY(`item_id`);
