@@ -135,31 +135,39 @@ DELETE FROM `items`
 WHERE
     (
         -- Filter out low level items
-        (
-            (
-                (`required_level` < 40 AND `item_level` < 40) OR (`required_level` < 40 AND `item_level` = 0) OR (`required_level` = 0 AND `item_level` < 40)
-            )
-            -- Exceptions
-            AND `item_id` NOT IN (
-                13335, -- Baron Mount
-                19872, -- Raptor Mount
-                19902, -- Tiger Mount
-                20890, -- aq20 hilt
-                20886, -- aq20 hilt
-                18704, -- Mature Blue Dragon Sinew
-                17204, -- Eye of Sulfuras
-                17966, -- Onyxia Hide Backpack
-                20933, -- Husk of the Old God
-                20929, -- Carapace of the Old God
-                1404, -- Tidal Charm
-                2820, -- Nifty Stopwatch
-                4984, -- Skull of Impending Doom
-                19141 -- Luffa
-            )
-        )
-        OR
+        -- Optional, filter out low quality items under a given lvl and ilvl (comment this if you don't want to filter these items out)
+        -- If you enable this, uncomment the brackets for the clause immediately below
+        -- WARNING: This may have unintended consequences! Some end game items are green ilvl 1! (or similar)
+        -- (
+
+        --     (
+        --         (`required_level` < 40 AND `item_level` < 40 AND `quality` < 3)
+        --         OR (`required_level` < 40 AND `item_level` = 0 AND `quality` < 3)
+        --         OR (`required_level` = 0 AND `item_level` < 40 AND `quality` < 3)
+        --     )
+        --     Exceptions
+        --     AND
+        --     `item_id` NOT IN (
+        --         13335, -- Baron Mount
+        --         19872, -- Raptor Mount
+        --         19902, -- Tiger Mount
+        --         20890, -- aq20 hilt
+        --         20886, -- aq20 hilt
+        --         18704, -- Mature Blue Dragon Sinew
+        --         17204, -- Eye of Sulfuras
+        --         17966, -- Onyxia Hide Backpack
+        --         20933, -- Husk of the Old God
+        --         20929, -- Carapace of the Old God
+        --         1404, -- Tidal Charm
+        --         2820, -- Nifty Stopwatch
+        --         4984, -- Skull of Impending Doom
+        --         19141 -- Luffa
+        --     )
+        -- )
+        -- OR
+
         -- Filter out low quality items
-        (
+        -- (
             `quality` IN (0) -- , 1, 2, 6
             AND `item_id` NOT IN -- except for the following items
             (
@@ -168,7 +176,7 @@ WHERE
                 4984, -- Skull of Impending Doom
                 19141 -- Luffa
             )
-        )
+        -- )
     )
     -- Keep these items
     AND `name` NOT LIKE '%Recipe:%'
@@ -180,13 +188,32 @@ WHERE
 -- Filter out items with bad words in them (including recipes, formulas, patters, schematics, and plans)
 DELETE FROM `items`
 WHERE
-    `name` LIKE '%deprecated%'
-    OR `name` LIKE '%unused%'
-    OR `name` LIKE '%QAEnchant%'
-    OR `name` LIKE '%ZZOLD%'
-    OR `name` LIKE '%(TEST)%'
-    OR (`name` LIKE '% test%' AND `item_id` NOT IN (19971))
-    OR (`name` LIKE '%test %' AND `item_id` NOT IN (18361, 19160, 19971));
+    (
+        `name` LIKE '%deprecated%'
+        OR `name` LIKE '%unused%'
+        OR `name` LIKE '%QAEnchant%'
+        OR `name` LIKE '%ZZOLD%'
+        OR `name` LIKE BINARY '%OLD%'
+        OR `name` LIKE BINARY '%TEST%'
+        OR `name` LIKE '%(test)%'
+        OR `name` LIKE '63%'
+        OR `name` LIKE '90%'
+        OR `name` LIKE 'Green Hills of Stranglethorn%'
+        OR `name` LIKE 'Monster -%'
+        OR `name` LIKE 'Sayge\'s Fortune%'
+        OR `name` LIKE 'Shredder Operating Manual%'
+        OR `name` LIKE '%D0%'
+        OR `name` LIKE '%C0%'
+        OR `name` LIKE 'Internal%'
+        OR `name` LIKE '%[ph]%'
+        OR `name` = 'test'
+        -- OR `name` LIKE '% pound %' -- (fish)
+
+        OR `name` LIKE '% test%'
+        OR `name` LIKE '%test %'
+        OR `item_id` IN (5502, 6899, 13214, 6255, 16104)
+    )
+    AND `item_id` NOT IN (19971, 18361, 19160, 19971);
 
 -- We dropped this column earlier, now we're going to recreate it the way we want it.
 ALTER TABLE `items` ADD COLUMN `class` varchar(10) DEFAULT NULL AFTER `slot`;

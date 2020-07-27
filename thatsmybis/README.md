@@ -1,0 +1,1 @@
+This folder contains SQL specific to the Thats My BIS application! They are stored here in case they are of use to anyone else, as they took some time to compile. (`updates.sql` hosts a number of things that were only possible because of the work done in these files)
