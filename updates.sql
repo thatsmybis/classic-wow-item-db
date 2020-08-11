@@ -16,6 +16,9 @@ UPDATE `items` SET `name` = "Atiesh, Greatstaff of the Guardian (priest)"  WHERE
 UPDATE `items` SET `name` = "Atiesh, Greatstaff of the Guardian (druid)"   WHERE `item_id` = 22632;
 UPDATE `items` SET `name` = "Atiesh, Greatstaff of the Guardian (warlock)" WHERE `item_id` = 22630;
 
+UPDATE `items` SET `name` = "Bindings of the Windseeker (left)"  WHERE `item_id` = 18563;
+UPDATE `items` SET `name` = "Bindings of the Windseeker (right)" WHERE `item_id` = 18564;
+
 UPDATE `items` SET `description` = "Good luck." WHERE `item_id` = 17782; -- Talisman of Binding Shard
 
 -- ZG loot weights
