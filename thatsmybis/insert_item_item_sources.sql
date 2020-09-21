@@ -842,3 +842,217 @@ VALUES
     (83, 20635), -- jade-inlaid-vestments
     (83, 20638), -- leggings-of-the-demented-mind
     (83, 20639); -- strangely-glyphed-legplates
+
+INSERT INTO `item_item_sources` (`item_source_id`, `item_id`)
+VALUES
+    --
+    -- Tie Naxx loot to Naxx bosses
+    -- 60 Tokens
+    (60, 22726), -- splinter-of-atiesh
+    (60, 22682), -- frozen-rune
+    -- Wrist
+    (60, 22369), -- desecrated-bindings
+    (60, 22355), -- desecrated-bracers
+    (60, 22362), -- desecrated-wristguards
+    -- Hands
+    (60, 22357), -- desecrated-gauntlets
+    (60, 22371), -- desecrated-gloves
+    (60, 22364), -- desecrated-handguards
+    -- Waist
+    (60, 22370), -- desecrated-belt
+    (60, 22363), -- desecrated-girdle
+    (60, 22356), -- desecrated-waistguard
+    -- Legs
+    (60, 22366), -- desecrated-leggings
+    (60, 22359), -- desecrated-legguards
+    (60, 22352), -- desecrated-legplates
+    -- Feet
+    (60, 22365), -- desecrated-boots
+    (60, 22358), -- desecrated-sabatons
+    (60, 22372), -- desecrated-sandals
+    -- Chest
+    (60, 22349), -- desecrated-breastplate
+    (60, 22351), -- desecrated-robe
+    (60, 22350), -- desecrated-tunic
+    -- Shoulders
+    (60, 22354), -- desecrated-pauldrons
+    (60, 22368), -- desecrated-shoulderpads
+    (60, 22361), -- desecrated-spaulders
+    -- Head
+    (60, 22367), -- desecrated-circlet
+    (60, 22360), -- desecrated-headpiece
+    (60, 22353), -- desecrated-helmet
+    -- Finger
+    (60, 23060), -- bonescythe-ring
+    (60, 23062), -- frostfire-ring
+    (60, 23063), -- plagueheart-ring
+    (60, 23061), -- ring-of-faith
+    (60, 23066), -- ring-of-redemption
+    (60, 23067), -- ring-of-the-cryptstalker
+    (60, 23059), -- ring-of-the-dreadnaught
+    (60, 23064), -- ring-of-the-dreamwalker
+    (60, 23065), -- ring-of-the-earthshatterer
+
+    -- 61 Trash
+    (61, 23666), -- belt-of-the-grand-crusader
+    (61, 23226), -- ghoul-skin-tunic
+    (61, 23663), -- girdle-of-elemental-fury
+    (61, 23044), -- harbinger-of-doom
+    (61, 23665), -- leggings-of-elemental-fury
+    (61, 23668), -- leggings-of-the-grand-crusader
+    (61, 23221), -- misplaced-servo-arm
+    (61, 23069), -- necro-knights-garb
+    (61, 23664), -- pauldrons-of-elemental-fury
+    (61, 23237), -- ring-of-the-eternal-flame
+    (61, 23667), -- spaulders-of-the-grand-crusader
+    (61, 23238), -- stygian-buckler
+    (61, 22374), -- wartorn-chain-scrap
+    (61, 22376), -- wartorn-cloth-scrap
+    (61, 22373), -- wartorn-leather-scrap
+    (61, 22375), -- wartorn-plate-scrap
+
+    -- 62 Anub'Rekhan
+    (62, 22939), -- band-of-unanswered-prayers
+    (62, 22938), -- cryptfiend-silk-cloak
+    (62, 22937), -- gem-of-nerubis
+    (62, 22935), -- touch-of-frost
+    (62, 22936), -- wristguards-of-vengeance
+
+    -- 63 Faerlina
+    (63, 22940), -- icebane-pauldrons
+    (63, 22943), -- malice-stone-pendant
+    (63, 22941), -- polar-shoulder-pads
+    (63, 22942), -- the-widows-embrace
+    (63, 22806), -- widows-remorse
+
+    -- 64 Maexxna
+    (64, 23220), -- crystal-webbed-robe
+    (64, 22357), -- desecrated-gauntlets
+    (64, 22371), -- desecrated-gloves
+    (64, 22364), -- desecrated-handguards
+    (64, 22954), -- kiss-of-the-spider
+    (64, 22804), -- maexxnas-fang
+    (64, 22947), -- pendant-of-forgotten-names
+    (64, 22807), -- wraith-blade
+
+    -- 65 Noth
+    (65, 23031), -- band-of-the-inevitable
+    (65, 23030), -- cloak-of-the-scourge
+    (65, 23028), -- hailstone-band
+    (65, 22816), -- hatchet-of-sundered-bone
+    (65, 23006), -- libram-of-light
+    (65, 23029), -- noths-frigid-heart
+    (65, 23005), -- totem-of-flowing-water
+
+    -- 66 Heigan
+    (66, 23019), -- icebane-helmet
+    (66, 23033), -- icy-scale-coif
+    (66, 23068), -- legplates-of-carnage
+    (66, 23036), -- necklace-of-necropsy
+    (66, 23035), -- preceptors-hat
+
+    -- 67 Loatheb
+    (67, 23038), -- band-of-unnatural-forces
+    (67, 22800), -- brimstone-staff
+    (67, 22366), -- desecrated-leggings
+    (67, 22359), -- desecrated-legguards
+    (67, 22352), -- desecrated-legplates
+    (67, 23042), -- loathebs-reflection
+    (67, 23037), -- ring-of-spiritual-fervor
+    (67, 23039), -- the-eye-of-nerub
+
+    -- 68 Razuvious
+    (68, 23219), -- girdle-of-the-mentor
+    (68, 23014), -- iblis-blade-of-the-fallen-seraph
+    (68, 23004), -- idol-of-longevity
+    (68, 23018), -- signet-of-the-fallen-defender
+    (68, 23017), -- veil-of-eclipse
+    (68, 23009), -- wand-of-the-whispering-dead
+
+    -- 69 Gothik
+    (69, 23073), -- boots-of-displacement
+    (69, 23032), -- glacial-headdress
+    (69, 23020), -- polar-helmet
+    (69, 23023), -- sadists-collar
+    (69, 23021), -- the-soul-harvesters-bindings
+
+    -- 70 The Four Horsemen
+    (70, 22691), -- corrupted-ashbringer
+    (70, 22349), -- desecrated-breastplate
+    (70, 22351), -- desecrated-robe
+    (70, 22350), -- desecrated-tunic
+    (70, 23071), -- leggings-of-apocalypse
+    (70, 22809), -- maul-of-the-redeemed-crusader
+    (70, 23025), -- seal-of-the-damned
+    (70, 22811), -- soulstring
+    (70, 23027), -- warmth-of-forgiveness
+
+    -- 71 Patchwerk
+    (71, 22961), -- band-of-reanimation
+    (71, 22960), -- cloak-of-suturing
+    (71, 22815), -- severance
+    (71, 22818), -- the-plague-bearer
+    (71, 22820), -- wand-of-fates
+
+    -- 72 Grobbulus
+    (72, 22968), -- glacial-mantle
+    (72, 22967), -- icy-scale-spaulders
+    (72, 22803), -- midnight-haze
+    (72, 22988), -- the-end-of-dreams
+    (72, 22810), -- toxin-injector
+
+    -- 73 Gluth
+    (73, 22813), -- claymore-of-unholy-might
+    (73, 23075), -- deaths-bargain
+    (73, 22994), -- digested-hand-of-power
+    (73, 22981), -- gluths-missing-collar
+    (73, 22983), -- rime-covered-mantle
+
+    -- 74 Thaddius
+    (74, 22367), -- desecrated-circlet
+    (74, 22360), -- desecrated-headpiece
+    (74, 22353), -- desecrated-helmet
+    (74, 23001), -- eye-of-diminution
+    (74, 23070), -- leggings-of-polarity
+    (74, 23000), -- plated-abomination-ribcage
+    (74, 22801), -- spire-of-twilight
+    (74, 22808), -- the-castigator
+
+    -- 75 Sapphiron
+    (75, 23242), -- claw-of-the-frost-wyrm
+    (75, 23050), -- cloak-of-the-necropolis
+    (75, 23047), -- eye-of-the-dead
+    (75, 23549), -- fortitude-of-the-scourge *
+    (75, 23040), -- glyph-of-deflection
+    (75, 23548), -- might-of-the-scourge
+    (75, 23545), -- power-of-the-scourge
+    (75, 23547), -- resilience-of-the-scourge *
+    (75, 23049), -- sapphirons-left-eye
+    (75, 23048), -- sapphirons-right-eye
+    (75, 23045), -- shroud-of-dominion
+    (75, 23041), -- slayers-crest
+    (75, 23043), -- the-face-of-death
+    (75, 23046), -- the-restrained-essence-of-sapphiron
+
+    -- 76 Kel'Thuzad
+    (76, 23060), -- bonescythe-ring
+    (76, 22821), -- doomfinger
+    (76, 23062), -- frostfire-ring
+    (76, 23057), -- gem-of-trapped-innocents
+    (76, 23054), -- gressil-dawn-of-ruin
+    (76, 23056), -- hammer-of-the-twisting-nether
+    (76, 22802), -- kingsfall
+    (76, 22798), -- might-of-menethil
+    (76, 22812), -- nerubian-slavemaker *
+    (76, 23063), -- plagueheart-ring
+    (76, 23061), -- ring-of-faith
+    (76, 23066), -- ring-of-redemption
+    (76, 23067), -- ring-of-the-cryptstalker
+    (76, 23059), -- ring-of-the-dreadnaught
+    (76, 23064), -- ring-of-the-dreamwalker
+    (76, 23065), -- ring-of-the-earthshatterer
+    (76, 22819), -- shield-of-condemnation
+    (76, 22799), -- soulseeker
+    (76, 23053), -- stormrages-talisman-of-seething
+    (76, 23577), -- the-hungering-cold *
+    (76, 22520); -- the-phylactery-of-kelthuzad
