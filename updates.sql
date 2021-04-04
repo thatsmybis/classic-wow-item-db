@@ -1,11 +1,15 @@
 -- Head of Nefarian has duplicates for Horde and Alliance
 -- Allowing duplicates results in people picking the wrong one for wishlists or having to list two
+-- UPDATE `items` SET `name` = "Head of Nefarian (Alliance)" WHERE `item_id` = 19003;
+-- UPDATE `items` SET `name` = "Head of Nefarian (Horde)"    WHERE `item_id` = 19002;
 DELETE FROM `items` WHERE `item_id` = 19003;
 -- 19003 = Alliance
 -- 19002 = Horde
 
 -- Head of Onyxia has duplicates for Horde and Alliance
 -- Allowing duplicates results in people picking the wrong one for wishlists or having to list two
+-- UPDATE `items` SET `name` = "Head of Onyxia (Alliance)" WHERE `item_id` = 18423;
+-- UPDATE `items` SET `name` = "Head of Onyxia (Horde)"    WHERE `item_id` = 18422;
 DELETE FROM `items` WHERE `item_id` = 18423;
 -- 18423 = Alliance
 -- 18422 = Horde
@@ -379,6 +383,7 @@ UPDATE `items` SET `weight` = 0.5 WHERE `item_id` = 16939; -- dragonstalkers-hel
 UPDATE `items` SET `weight` = 0.5 WHERE `item_id` = 18205; -- eskhandars-collar
 UPDATE `items` SET `weight` = 0.5 WHERE `item_id` = 16921; -- halo-of-transcendence
 UPDATE `items` SET `weight` = 0.5 WHERE `item_id` = 18422; -- head-of-onyxia
+UPDATE `items` SET `weight` = 0.5 WHERE `item_id` = 18423; -- head-of-onyxia
 UPDATE `items` SET `weight` = 0.5 WHERE `item_id` = 16963; -- helm-of-wrath
 UPDATE `items` SET `weight` = 0.5 WHERE `item_id` = 16947; -- helmet-of-ten-storms
 UPDATE `items` SET `weight` = 0.5 WHERE `item_id` = 16955; -- judgement-crown

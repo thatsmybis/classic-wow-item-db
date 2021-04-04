@@ -193,7 +193,8 @@ VALUES
     (14, 16939), -- dragonstalkers-helm
     (14, 18205), -- eskhandars-collar
     (14, 16921), -- halo-of-transcendence
-    (14, 18422), -- head-of-onyxia
+    (14, 18422), -- head-of-onyxia-horde
+    -- (14, 18423), -- head-of-onyxia-alliance
     (14, 16963), -- helm-of-wrath
     (14, 16947), -- helmet-of-ten-storms
     (14, 16955), -- judgement-crown
@@ -348,8 +349,8 @@ VALUES
     (24, 19378), -- cloak-of-the-brood-lord
     (24, 19363), -- crulshorukh-edge-of-chaos
     (24, 16942), -- dragonstalkers-breastplate
-    (24, 19002), -- head-of-nefarian
-    -- (24, 19003), -- head-of-nefarian
+    (24, 19002), -- head-of-nefarian-horde
+    -- (24, 19003), -- head-of-nefarian-alliance
     (24, 16958), -- judgement-breastplate
     (24, 19360), -- lokamir-il-romathis
     (24, 19375), -- mishundare-circlet-of-the-mind-flayer
@@ -510,7 +511,7 @@ VALUES
     (37, 19854), -- zinrokh-destroyer-of-worlds
 
     --
-    -- Tie ZG loot to ZG bosses
+    -- Tie AQ20 loot to AQ20 bosses
     -- Enchants 38
     (38, 20734), -- formula-enchant-cloak-stealth
     (38, 20728), -- formula-enchant-gloves-frost-power
