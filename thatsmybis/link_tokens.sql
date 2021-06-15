@@ -218,8 +218,21 @@ UPDATE `items` SET `parent_id` = 14467, `parent_item_id` = 22371 WHERE `item_id`
 UPDATE `items` SET `parent_id` = 14467, `parent_item_id` = 22371 WHERE `item_id` = 22517 AND `expansion_id` = 1; -- gloves-of-faith
 UPDATE `items` SET `parent_id` = 14467, `parent_item_id` = 22371 WHERE `item_id` = 22509 AND `expansion_id` = 1; -- plagueheart-gloves
 UPDATE `items` SET `parent_id` = 14468, `parent_item_id` = 22372 WHERE `item_id` = 22500 AND `expansion_id` = 1; -- frostfire-sandals
-UPDATE `items` SET `parent_id` = 14469, `parent_item_id` = 22373 WHERE `item_id` = 22508 AND `expansion_id` = 1; -- plagueheart-sandals
-UPDATE `items` SET `parent_id` = 14470, `parent_item_id` = 22374 WHERE `item_id` = 22516 AND `expansion_id` = 1; -- sandals-of-faith
+UPDATE `items` SET `parent_id` = 14468, `parent_item_id` = 22372 WHERE `item_id` = 22508 AND `expansion_id` = 1; -- plagueheart-sandals
+UPDATE `items` SET `parent_id` = 14468, `parent_item_id` = 22372 WHERE `item_id` = 22516 AND `expansion_id` = 1; -- sandals-of-faith
+UPDATE `items` SET `parent_id` = 14445, `parent_item_id` = 22349 WHERE `item_id` = 22476 AND `expansion_id` = 1; -- bonescythe-breastplate, desecrated-breastplate
+UPDATE `items` SET `parent_id` = 14445, `parent_item_id` = 22349 WHERE `item_id` = 22416 AND `expansion_id` = 1; -- dreadnaught-breastplate, desecrated-breastplate
+UPDATE `items` SET `parent_id` = 14447, `parent_item_id` = 22351 WHERE `item_id` = 22496 AND `expansion_id` = 1; -- frostfire-robe, desecrated-robe
+UPDATE `items` SET `parent_id` = 14447, `parent_item_id` = 22351 WHERE `item_id` = 22504 AND `expansion_id` = 1; -- plagueheart-robe, desecrated-robe
+UPDATE `items` SET `parent_id` = 14447, `parent_item_id` = 22351 WHERE `item_id` = 22512 AND `expansion_id` = 1; -- robe-of-faith, desecrated-robe
+UPDATE `items` SET `parent_id` = 14446, `parent_item_id` = 22350 WHERE `item_id` = 22436 AND `expansion_id` = 1; -- cryptstalker-tunic, desecrated-tunic
+UPDATE `items` SET `parent_id` = 14446, `parent_item_id` = 22350 WHERE `item_id` = 22488 AND `expansion_id` = 1; -- dreamwalker-tunic, desecrated-tunic
+UPDATE `items` SET `parent_id` = 14446, `parent_item_id` = 22350 WHERE `item_id` = 22464 AND `expansion_id` = 1; -- earthshatter-tunic, desecrated-tunic
+UPDATE `items` SET `parent_id` = 14446, `parent_item_id` = 22350 WHERE `item_id` = 22425 AND `expansion_id` = 1; -- redemption-tunic, desecrated-tunic
+UPDATE `items` SET `parent_id` = 14702, `parent_item_id` = 22726 WHERE `item_id` = 22632 AND `expansion_id` = 1; -- atiesh-greatstaff-of-the-guardian, splinter-of-atiesh
+UPDATE `items` SET `parent_id` = 14702, `parent_item_id` = 22726 WHERE `item_id` = 22589 AND `expansion_id` = 1; -- atiesh-greatstaff-of-the-guardian, splinter-of-atiesh
+UPDATE `items` SET `parent_id` = 14702, `parent_item_id` = 22726 WHERE `item_id` = 22631 AND `expansion_id` = 1; -- atiesh-greatstaff-of-the-guardian, splinter-of-atiesh
+UPDATE `items` SET `parent_id` = 14702, `parent_item_id` = 22726 WHERE `item_id` = 22630 AND `expansion_id` = 1; -- atiesh-greatstaff-of-the-guardian, splinter-of-atiesh
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
