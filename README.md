@@ -74,7 +74,7 @@ These are the general items I found for each value in this column:
 - 15 = bow
 - 16 = cloak
 - 17 = 2h weapon
-- 18 = quiver/ammo pouch
+- 18 = bag, quiver/ammo pouch
 - 19 = //// nothing (after my filters, I found nothing in here)
 - 20 = cloth chest
 - 21 = more 1h weapons
@@ -82,7 +82,7 @@ These are the general items I found for each value in this column:
 - 23 = offhand non-weapon
 - 24 = ammo
 - 25 = thrown
-- 26 = wand, gun
+- 26 = crossbow, gun, wand
 - 27 = //// nothing (after my filters, I found nothing in here)
 - 28 = totem/idol/libram
 
